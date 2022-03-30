@@ -42,7 +42,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // extract the parameters from the request
         $params = $request->only([
             'username',
             'password',
@@ -50,8 +49,7 @@ class UserController extends Controller
             'name'
         ]);
 
-        // write the record to the database
-        User::create($request->all());
+        User::create($params);
 
         return 'Done';
     }

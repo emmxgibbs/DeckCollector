@@ -16,9 +16,9 @@ class CardController extends Controller
      */
     public function index(Request $request)
     {
-        $search = $request['search'];
-        $cards = Card::where('card_title', 'like', "%$search%")->paginate(15);;
-        return view('cards.index', compact('cards'));
+        // $search = $request['search'];
+        // $cards = Card::where('card_title', 'like', "%$search%")->paginate(15);;
+        // return view('cards.index', compact('cards'));
 
     }
 

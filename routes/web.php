@@ -19,10 +19,6 @@ Route::get('/', function() {
     return view('welcome');
 });
 
-Route::get('/welcome', function() {
-    return view('welcome');
-});
-
 Route::get('/sign-up', function() {
     return view('sign-up');
 });
@@ -42,6 +38,7 @@ Route::get('/search', function() {
 Route::get('/home', function() {
     return view('home');
 });
+
 
 // Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 //create - tick something off as belonging to user
