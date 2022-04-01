@@ -20,23 +20,23 @@ Route::get('/', function() {
 });
 
 Route::get('/sign-up', function() {
-    return view('sign-up');
+    return view('deck-collector/sign-up');
 });
 
 Route::get('/submit', function() {
-    return view('submit');
+    return view('deck-collector/submit');
 });
 
 Route::get('/login', function() {
-    return view('login');
+    return view('deck-collector/login');
 });
 
 Route::get('/search', function() {
-    return view('search');
+    return view('deck-collector/search');
 });
 
 Route::get('/home', function() {
-    return view('home');
+    return view('deck-collector/home');
 });
 
 
@@ -52,4 +52,4 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')
 
 Route::get('/cards/index', [CardController::class, 'index'])->name('cards.index');
 
-Route::get('/cards/{card}', [UserController::class, 'show'])->name('cards.show');
+Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');

@@ -12,14 +12,10 @@ class Card extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    public $timestamps = false;
-
     protected $fillable = [
-            'card_title',
-            'set_name',
-            'card_number',
-            'generation',
-            'img'
+            'name',
+            'image',
+            'image_large',
     ];
 
     public function users() {

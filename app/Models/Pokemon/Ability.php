@@ -1,6 +1,8 @@
 <?php
 
-namespace Pokemon\Models;
+namespace App\Models\Pokemon;
+
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Ability

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use App\Models\Card;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,6 @@ class UserController extends Controller
     {
         $search = $request['search'];
         $users = User::where('username', 'like', "%$search%")->paginate(15);
-        $cards = Card::all();
         return view('users.index', compact('users'));
 
     }
@@ -40,16 +40,10 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $params = $request->only([
-            'username',
-            'password',
-            'email',
-            'name'
-        ]);
-
-        User::create($params);
+        //validated data to db
+        User::create($request->validated());
 
         return 'Done';
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Card;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\GetPokemonRequest;
 
 use function PHPSTORM_META\map;
 
@@ -16,9 +18,9 @@ class CardController extends Controller
      */
     public function index(Request $request)
     {
-        // $search = $request['search'];
-        // $cards = Card::where('card_title', 'like', "%$search%")->paginate(15);;
-        // return view('cards.index', compact('cards'));
+        $search = $request['search'];
+        $cards = Card::where('name', 'like', "%$search%")->paginate(30);
+        return view('cards.index', compact('cards'));
 
     }
 
@@ -64,6 +66,7 @@ class CardController extends Controller
     public function show(Card $card)
     {
         return view('cards.show', compact('card'));
+
     }
 
     /**
@@ -99,4 +102,6 @@ class CardController extends Controller
     {
         //
     }
+
+
 }

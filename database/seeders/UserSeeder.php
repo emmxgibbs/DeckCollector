@@ -19,24 +19,12 @@ class UserSeeder extends Seeder
     public function run(Generator $faker)
     {
         for($i = 0; $i < 100; $i++) {
-
             User::create([
                 'username' => $faker->userName(40),
                 'password' => $faker->password(),
                 'email' => $faker->freeEmail(),
                 'name' => $faker->name(),
             ]);
-
         }
-
-        // $users = User::all();
-
-        // foreach(Card::all() as $card) {
-        //     // $randomUser = $user->random(rand(1, 100));
-
-        //     foreach($users as $user) {
-        //         $user->cards()->attach($card->id);
-        //     }
-        //}
     }
 }
