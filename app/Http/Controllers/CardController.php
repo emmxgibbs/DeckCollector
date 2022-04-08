@@ -6,8 +6,8 @@ use App\Models\Card;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\GetPokemonRequest;
-
-use function PHPSTORM_META\map;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CardController extends Controller
 {
@@ -19,7 +19,8 @@ class CardController extends Controller
     public function index(Request $request)
     {
         $search = $request['search'];
-        $cards = Card::where('name', 'like', "%$search%")->paginate(30);
+        $cards = Card::where('name', 'like', "%$search%")->orderBy('types')->paginate(30);
+
         return view('cards.index', compact('cards'));
 
     }
@@ -44,11 +45,13 @@ class CardController extends Controller
     {
         // extract the parameters from the request
         $params = $request->only([
-            'card_title',
-            'set_name',
-            'card_number',
-            'generation',
-            'img'
+            'name',
+            'image',
+            'image_large',
+            'types',
+            'evolves_from',
+            'hp',
+            'cardmarket'
         ]);
 
         // write the record to the database
@@ -66,7 +69,6 @@ class CardController extends Controller
     public function show(Card $card)
     {
         return view('cards.show', compact('card'));
-
     }
 
     /**

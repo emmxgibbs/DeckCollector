@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\User;
+use App\Models\Card;
+use App\Models\Character;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,11 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('card_user', function (Blueprint $table) {
+        Schema::create('card_character', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Card::class);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Character::class);
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('card_user');
+        Schema::dropIfExists('card_character');
     }
 };

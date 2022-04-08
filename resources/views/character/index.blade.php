@@ -1,17 +1,15 @@
 @extends('layouts.main')
 
-<!-- can search for cards by their title -->
-
 @section('content')
 
     <h1>
-        Cards:
+        Pokemon
     </h1>
 
     <div class="row">
         
     
-    <form action="{{ route('cards.index') }}" method="GET">
+    <form action="{{ route('characters.index') }}" method="GET">
         <label>Search: </label>    
         <input type="text" name="search">
         <button>Search</button>
@@ -19,18 +17,18 @@
     
     <div class="col-9">
     <ul>
-        @foreach($cards as $card)
+        @foreach($characters as $character)
             <li>
-                <a href="{{ route('cards.show', $card) }}">
-                    {{ $card->name }}
-                    <img src="{{ URL($card->image) }}">
+                <a href="{{ route('characters.show', $card) }}">
+                    {{ $character->name }}
+                    <img src="{{ URL($character->image) }}">
                 </a>
             </li>
         @endforeach
     </ul>
     </div>
 
-    {{ $cards->links() }}
+    {{ $characters->links() }}
     </div>
 
 @endsection

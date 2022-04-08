@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Game;
+use App\Models\Pokemon\Set;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,12 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cards', function (Blueprint $table) {
+        Schema::create('game_set', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->string('image');
-            $table->string('image_large');
+            $table->foreignIdFor(Game::class);
+            $table->foreignIdFor(Set::class);
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cards');
+        Schema::dropIfExists('game_set');
     }
 };

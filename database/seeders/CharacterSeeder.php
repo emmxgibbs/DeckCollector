@@ -5,19 +5,39 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Card;
+use App\Models\Character;
 use App\Models\Pokemon\Set;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
-class CardSeeder extends Seeder
+class CharacterSeeder extends Seeder
 {
-/**
-* Run the database seeds.
-*
-* @return void
-*/
-public function run()
+    public function run()
+{
+
+    for($i = 0; $i < 1146; $i++) {
+        Character::create([
+            'name' => name(),
+        ]);
+    }
+
+
+$card = Card::all();
+$pokemon = Http::get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126');
+foreach($pokemon['results'] as $pokemon)
+$this->seedPokemon($pokemon);
+}
+
+private function seedPokemon($pokemon) {
+$params = Arr::only($pokemon, [
+'name',
+]);
+
+Character::create($params);
+
+}
+}
     {
         for($i = 1; $i < 59; $i++)
 

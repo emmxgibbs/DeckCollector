@@ -15,6 +15,7 @@ class SetSeeder extends Seeder
      *
      * @return void
      */
+    
     public function run()
     {
         $sets = Http::get('https://api.pokemontcg.io/v2/sets');

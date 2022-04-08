@@ -1,8 +1,15 @@
 <?php
 
-use App\Http\Controllers\CardController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CardController;
+use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\PokemonController;
+use App\Http\Controllers\UserController;
+use App\Models\Character;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,30 +22,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sign-up', function() {
-    return view('deck-collector/sign-up');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('auth/register', function() {
+return view('auth/register');
 });
 
-Route::get('/submit', function() {
-    return view('deck-collector/submit');
+Route::get('auth/login', function() {
+return view('auth/login');
 });
 
-Route::get('/login', function() {
-    return view('deck-collector/login');
+Route::get('deck-collector/search', function() {
+return view('deck-collector/search');
 });
 
-Route::get('/search', function() {
-    return view('deck-collector/search');
+Route::get('deck-collector/welcome', function() {
+return view('deck-collector/welcome');
 });
-
-Route::get('/home', function() {
-    return view('deck-collector/home');
-});
-
 
 // Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
 //create - tick something off as belonging to user
@@ -46,10 +52,24 @@ Route::get('/home', function() {
 // Route::post('/users', [UserController::class, 'store'])->name('users.store');
 //stores the response from ticking the cards owned
 
-Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
+// Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
 
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
 Route::get('/cards/index', [CardController::class, 'index'])->name('cards.index');
 
 Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
+
+Route::get('/characters/index}', [CharacterController::class, 'index'])->name('character.index');
+
+Route::get('/characters/{id}', [CharacterController::class, 'show'])->name('character.show');
+
+// Route::get('cards', function () {
+
+//     $cards = Cache::remember('cards', $seconds = 120, function () {
+//         return DB::table('cards')->get();
+//     });
+
+//     return $cards;
+
+// });

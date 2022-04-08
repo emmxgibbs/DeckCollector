@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreUserRequest;
-use App\Models\Card;
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\Card;
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\GetPokemonRequest;
+use App\Models\Character;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-use function PHPSTORM_META\map;
 
-class UserController extends Controller
+class CharacterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(Request $request)
     {
         $search = $request['search'];
-        $users = User::where('username', 'like', "%$search%")->paginate(15);
-        return view('users.index', compact('users'));
-        
-        
+        $characters = Character::where('name', 'like', "%$search%")->orderBy('name')->paginate(30);
+
+        return view('character.index', compact('characters'));
 
     }
 
@@ -32,10 +32,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        return view('users.create');
+        return view('character.create');
     }
 
     /**
@@ -44,10 +43,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
-        //validated data to db
-        User::create($request->validated());
+        // extract the parameters from the request
+        $params = $request->only([
+            'name',
+        ]);
+
+        // write the record to the database
+        Character::create($params);
 
         return 'Done';
     }
@@ -55,21 +59,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(Character $character)
     {
-        return view('users.show', compact('user'));
+        return view('character.show', compact('character'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit(Character $character)
     {
         //
     }
@@ -78,10 +82,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, Character $character)
     {
         
     }
@@ -89,11 +93,13 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param  \App\Models\Character  $character
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Character $character)
     {
         //
     }
+
+
 }

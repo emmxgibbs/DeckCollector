@@ -18,10 +18,10 @@ class UserSeeder extends Seeder
      */
     public function run(Generator $faker)
     {
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 10; $i++) {
             User::create([
                 'username' => $faker->userName(40),
-                'password' => $faker->password(),
+                'password' => Hash::make('password'),
                 'email' => $faker->freeEmail(),
                 'name' => $faker->name(),
             ]);

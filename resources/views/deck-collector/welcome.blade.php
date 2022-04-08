@@ -12,7 +12,7 @@
           <h1 class="jumbotron-heading">DeckCollector</h1>
           <p class="lead text-muted">Keep track of all your cards from the most popular trading card game of the century.</p>
           <p>
-            <a href="/sign-up" class="btn btn-primary my-2">Sign up to begin collecting</a>
+            <a href="/register" class="btn btn-primary my-2">Sign up to begin collecting</a>
             <a href="/login" class="btn btn-secondary my-2">Login to view your collection</a>
           </p>
         </div>

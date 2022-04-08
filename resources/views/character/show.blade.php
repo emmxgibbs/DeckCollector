@@ -3,11 +3,11 @@
 @section('content')
 
     <h2>
-        Details for: {{ $card->name }}
+        Details for: {{ $character->name }}
     </h2>
 
 <div class="row">
-    <img class="col-4" src="{{ URL($card->image_large) }}">
+    <img class="col-4" src="{{ URL($character->image_large) }}">
 
     <div class="col-4">
         <div class="row">
