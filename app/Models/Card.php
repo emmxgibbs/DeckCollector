@@ -22,6 +22,7 @@ class Card extends Model
             'evolves_from',
             'types',
             'cardmarket',
+            'pokedex_number'
     ];
 
     public function users() {

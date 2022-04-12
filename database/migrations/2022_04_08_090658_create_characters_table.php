@@ -20,7 +20,6 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->foreignIdFor(Game::class);
-            $table->foreignIdFor(Card::class);
         });
     }
 

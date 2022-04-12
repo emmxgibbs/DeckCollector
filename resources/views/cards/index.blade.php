@@ -8,6 +8,11 @@
         Cards:
     </h1>
 
+    <main class="container" id="vue-app">
+        @yield('content')
+        <hello-world></hello-world>
+    </main>
+
     <div class="row">
         
     

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Card;
+use App\Models\Character;
 use App\Models\Pokemon\Pokemon;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -26,6 +27,7 @@ public function up()
         $table->string('evolves_from');
         $table->string('hp');
         $table->string('cardmarket');
+        $table->integer('pokedex_number');
     });
 }
 

@@ -52,7 +52,8 @@ private function seedCard($card) {
             'hp' => $card['hp'] ?? '',
             'evolves_from' => $card['evolvesFrom'] ?? '',
             'types' => $card['types'][0] ?? '',
-            'cardmarket' => Arr::get($card, 'cardmarket.prices.averageSellPrice', '')
+            'cardmarket' => Arr::get($card, 'cardmarket.prices.averageSellPrice', ''),
+            'pokedex_number' => $card['nationalPokedexNumbers'][0] ?? ''
             );
 
         $set->cards()->create($params);
