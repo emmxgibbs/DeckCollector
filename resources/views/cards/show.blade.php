@@ -18,9 +18,9 @@
 
     <div class="col-4">
     Type: {{ $card->types }}
-    <br>
-    <br>
-    <br>
+    <br/>
+    <br/>
+    <br/>
     Evolves From: <a href="/cards?search={{ $card->evolves_from }}"> {{ $card->evolves_from }} </a>
     </div>
 

@@ -11,13 +11,6 @@
         <input type="text" name="search">
         <button>Search</button>
     </form>
-    
-    
-
-    {{ $cards->links() }}
-    </div>
-
-@endsection
 
 <!-- should be in a component for reuse in several pages as a card -->
 <div class="album py-5 bg-light">
@@ -47,3 +40,7 @@
         </div>
     </div>
 </div>
+
+{{ $cards->links() }}
+
+@endsection
