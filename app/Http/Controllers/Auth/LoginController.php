@@ -61,6 +61,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/home');
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 }

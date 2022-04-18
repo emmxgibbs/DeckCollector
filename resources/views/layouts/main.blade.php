@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
               <h4 class="text-white">About</h4>
-              <p class="text-muted">This is basically where it says what the site can be used for and what users can get from the experience. Add this in later.</p>
+              <p class="text-muted">DeckCollector is designed to help avid card collectors work out their collections' worth.</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">Contact</h4>
@@ -25,10 +25,9 @@
                 <li><a href="#" class="text-white">Follow on Twitter</a></li>
                 <li><a href="#" class="text-white">Like on Facebook</a></li>
                 <li><a href="#" class="text-white">Email me</a></li>
-                <li>
-                  <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button class="text-white">Logout</button>
+                <li><form id="logout_form" action="{{ route('logout') }}" method="post">
+                  @csrf
+                    <a href="javascript:{}" onclick="document.getElementById('logout_form').submit();" class="text-white">Logout</a>
                   </form>
                 </li>
               </ul>
