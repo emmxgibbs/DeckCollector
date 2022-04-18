@@ -23,7 +23,6 @@
     <br>
     Evolves From: <a href="/cards?search={{ $card->evolves_from }}"> {{ $card->evolves_from }} </a>
     </div>
-
 </div>
 
 @endsection

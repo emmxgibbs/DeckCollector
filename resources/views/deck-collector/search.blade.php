@@ -1,3 +1,0 @@
-<html>
-    search
-</html>

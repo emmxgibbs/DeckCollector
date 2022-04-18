@@ -10,34 +10,40 @@ use App\Models\Game;
 use App\Models\Pokemon\Set;
 use App\Models\User;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class CharacterSeeder extends Seeder
 {
+    private $game;
+
     public function run()
-{
+    {
+        DB::table('characters')->truncate();
+        DB::table('card_character')->truncate();
 
-    for($i = 0; $i < 1126; $i++) {
-        $characters = Http::get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126');
+        $this->game = Game::where('name', 'Pokemon')->firstOrFail();
+        // for($i = 0; $i < 1126; $i++) {
+            $characters = Http::get('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1126');
 
-        foreach($characters['results'] as $character) {
-            $this->seedCharacter($character);
-        }
+            foreach($characters['results'] as $character) {
+                $this->seedCharacter($character);
+            }
+        // }
     }
-}
 
     private function seedCharacter($character) {
         // get character data + pokedex number
         $characterData = Http::get($character['url']);
-        $characterCards = Card::where('pokedex_number', $characterData['id']);
-        $game = Game::where('name', 'Pokemon');
+        $characterCards = Card::where('pokedex_number', $characterData['id'])->get();
+        
 
         // get cards corresponding to this pokedex number
         $params = Arr::only($character, ['name']);
-        $params['game_id'] = $game['id'];
+        $params['game_id'] = $this->game->id;
         $created = Character::create($params);
 
-        // assoicate the newly created chracter with these cards
+        // associate the newly created chracter with these cards
         foreach($characterCards as $card) {
             $created->cards()->attach($card->id);
         }

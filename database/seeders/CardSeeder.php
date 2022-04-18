@@ -35,6 +35,10 @@ public function run()
             $user->cards()->attach($card->id);
         }
     }
+
+        // foreach($games as $game) {
+        //     $user->cards()->attach($card->id);
+        // }
 }  
 
 private function seedPage($cards) {
@@ -49,11 +53,11 @@ private function seedCard($card) {
             'name' => $card['name'],
             'image' => Arr::get($card, 'images.small'),
             'image_large' => Arr::get($card, 'images.large'),
+            'pokedex_number' => $card['nationalPokedexNumbers'][0] ?? 0,
             'hp' => $card['hp'] ?? '',
             'evolves_from' => $card['evolvesFrom'] ?? '',
             'types' => $card['types'][0] ?? '',
             'cardmarket' => Arr::get($card, 'cardmarket.prices.averageSellPrice', ''),
-            'pokedex_number' => $card['nationalPokedexNumbers'][0] ?? ''
             );
 
         $set->cards()->create($params);

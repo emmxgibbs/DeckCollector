@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CardController;
+use App\Http\Controllers\CardUserController;
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\UserController;
@@ -38,10 +39,6 @@ Route::get('auth/login', function() {
 return view('auth/login');
 });
 
-Route::get('deck-collector/search', function() {
-return view('deck-collector/search');
-});
-
 Route::get('deck-collector/welcome', function() {
 return view('deck-collector/welcome');
 });
@@ -52,22 +49,25 @@ return view('deck-collector/welcome');
 // Route::post('/users', [UserController::class, 'store'])->name('users.store');
 //stores the response from ticking the cards owned
 
-// Route::get('/users/index', [UserController::class, 'index'])->name('users.index');
-
 Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
 
-Route::get('/cards/index', [CardController::class, 'index'])->name('cards.index');
+Route::get('/cards', [CardController::class, 'index'])->name('cards.index');
 
 Route::get('/cards/{card}', [CardController::class, 'show'])->name('cards.show');
 
-Route::get('/characters/index}', [CharacterController::class, 'index'])->name('character.index');
+Route::get('/characters}', [CharacterController::class, 'index'])->name('character.index');
 
 Route::get('/characters/{id}', [CharacterController::class, 'show'])->name('character.show');
+
+Route::get('/my-cards', [CardUserController::class, 'index'])->name('users.cards.index');
+
+Route::get('/my-cards/{card}', [CardUserController::class, 'show'])->name('users.cards.show');
+
 
 // Route::get('cards', function () {
 
 //     $cards = Cache::remember('cards', $seconds = 120, function () {
-//         return DB::table('cards')->get();
+//         return DB::table('cards'.'image')->get();
 //     });
 
 //     return $cards;

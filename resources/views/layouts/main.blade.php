@@ -25,7 +25,12 @@
                 <li><a href="#" class="text-white">Follow on Twitter</a></li>
                 <li><a href="#" class="text-white">Like on Facebook</a></li>
                 <li><a href="#" class="text-white">Email me</a></li>
-                <li><a href="#" class="text-white">Logout</a></li>
+                <li>
+                  <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="text-white">Logout</button>
+                  </form>
+                </li>
               </ul>
             </div>
           </div>

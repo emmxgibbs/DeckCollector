@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // ALL SEEDED 12/4/22
         // $this->call(UserSeeder::class);
         // $this->call(GameSeeder::class);
         // $this->call(SetSeeder::class);
-        $this->call(CharacterSeeder::class);
+        // $this->call(CharacterSeeder::class);
         // $this->call(CardSeeder::class);
     }
 }

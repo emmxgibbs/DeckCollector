@@ -16,6 +16,9 @@
 
                     {{ __('You are logged in!') }}
                 </div>
+
+                <a href="/my-cards" type="button" class="btn btn-sm btn-outline-danger">View my cards!</a>
+                <a href="/cards" type="button" class="btn btn-sm btn-outline-danger">View all cards!</a>
             </div>
         </div>
     </div>

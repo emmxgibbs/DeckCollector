@@ -17,8 +17,17 @@ class GameSeeder extends Seeder
     {
         Game::create([
             'name' => 'Pokemon',
+        ]);
+
+        Game::create([
             'name' => 'Yu-Gi-Oh',
+        ]);
+
+        Game::create([
             'name' => 'Digimon',
+        ]);
+
+        Game::create([
             'name' => 'Magic! The Gathering',
         ]);
     }
