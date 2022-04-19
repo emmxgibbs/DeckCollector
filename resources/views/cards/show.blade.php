@@ -11,17 +11,19 @@
 
     <div class="col-4">
         <div class="row">
-        <h3> Average selling price: {{ $card->cardmarket }} </h3>
+        <h4> Average selling price: {{ $card->cardmarket }} </h4>
         
         </div>
     </div>
 
     <div class="col-4">
-    Type: {{ $card->types }}
-    <br/>
-    <br/>
-    <br/>
-    Evolves From: <a href="/cards?search={{ $card->evolves_from }}"> {{ $card->evolves_from }} </a>
+        <h4> 
+            Type: {{ $card->types }}
+                <br/>
+                <br/>
+                <br/>
+            Evolves From: <a href="/cards?search={{ $card->evolves_from }}"> {{ $card->evolves_from }} </a>
+        </h4>
     </div>
 
 </div>

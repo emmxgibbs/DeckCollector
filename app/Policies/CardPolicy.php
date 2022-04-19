@@ -20,9 +20,13 @@ class CardPolicy
         //
     }
 
-    public function view(User $user, Card $card) {
+    //users can view all cards
+    public function viewAny(User $user) {
+        return true;
+    }
 
+    //user can view the cards they own
+    public function view(User $user, Card $card) {
         return $user->id == $card->user_id;
-        
     }
 }

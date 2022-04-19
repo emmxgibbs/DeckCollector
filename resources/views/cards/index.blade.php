@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>
-        Cards:
+        All Cards:
     </h1>
 
     <form action="{{ route('cards.index') }}" method="GET">
@@ -27,8 +27,8 @@
                             </a>
                                 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="owned" id="ownedCheckbox">
+                                <label class="form-check-label" for="ownedCheckbox">
                                         Owned
                                 </label>
                             </div>

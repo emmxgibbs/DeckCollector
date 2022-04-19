@@ -3,7 +3,7 @@
 @section('content')
 
     <h1>
-        Cards
+        My Cards:
     </h1>
 
     <form action="{{ route('users.cards.index') }}" method="GET">
@@ -21,7 +21,7 @@
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body, center-block" style="padding: 15px; margin: 30px">
                             <div class="d-flex justify-content-between align-items-center" style="flex-direction: column">       
-                            <a href="{{ route('users.cards.show', $card) }}">
+                            <a href="{{ route('users.cards.show', $card) }}" class="text-center" style="color:black">
                                 {{ $card->name }}
                                 <img class="card-img-top" src="{{ URL($card->image) }}" class="img-responsive, img-rounded, hover-shadow">
                             </a>
