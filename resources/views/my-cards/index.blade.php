@@ -2,6 +2,10 @@
 
 @section('content')
 
+<a href="/cards" type="button" class="btn btn-sm btn-outline-danger">View all cards!</a>
+<br/>
+<br/>
+
     <h1>
         My Cards:
     </h1>
@@ -16,6 +20,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
+            
             @foreach($userCards as $card)
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
@@ -26,10 +31,10 @@
                                 <img class="card-img-top" src="{{ URL($card->image) }}" class="img-responsive, img-rounded, hover-shadow">
                             </a>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                                    <label class="form-check-label" for="flexCheckChecked">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                                <label class="form-check-label" for="flexCheckChecked">
                                             Owned
-                                    </label>
+                                </label>
                             </div>
                         </div>
                     </div>     
@@ -39,6 +44,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 
 

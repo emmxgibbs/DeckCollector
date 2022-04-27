@@ -25,4 +25,8 @@
     </div>
 </div>
 
+<br/>
+<br/>
+<a href="/my-cards" type="button" class="btn btn-sm btn-outline-danger">Back to my cards!</a>
+
 @endsection

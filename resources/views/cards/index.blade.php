@@ -2,6 +2,10 @@
 
 @section('content')
 
+<a href="/my-cards" type="button" class="btn btn-sm btn-outline-danger">View my cards!</a>
+<br/>
+<br/>
+
     <h1>
         All Cards:
     </h1>
