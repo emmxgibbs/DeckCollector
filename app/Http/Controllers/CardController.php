@@ -91,7 +91,7 @@ class CardController extends Controller
      */
     public function update(Request $request, Card $card)
     {
-        
+        //
     }
 
     /**
