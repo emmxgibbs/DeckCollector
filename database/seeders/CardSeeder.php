@@ -25,7 +25,7 @@ public function run()
             $page = Http::get("https://api.pokemontcg.io/v2/cards", ['page' => $i]);
             $this->seedPage($page['data']);
         }
-    
+
     $users = User::all();
 
     foreach(Card::all() as $card) {
@@ -35,11 +35,7 @@ public function run()
             $user->cards()->attach($card->id);
         }
     }
-
-        // foreach($games as $game) {
-        //     $user->cards()->attach($card->id);
-        // }
-}  
+}
 
 private function seedPage($cards) {
     foreach($cards as $card)

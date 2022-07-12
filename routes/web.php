@@ -59,7 +59,7 @@ Route::get('/characters}', [CharacterController::class, 'index'])->name('charact
 
 Route::get('/characters/{id}', [CharacterController::class, 'show'])->name('character.show');
 
-Route::get('/my-cards', [CardUserController::class, 'index'])->name('users.cards.index');
+Route::get('/my-cards', [CardUserController::class, 'index'])->name('users.cards.index')->middleware('auth');
 
 Route::get('/my-cards/{card}', [CardUserController::class, 'show'])->name('users.cards.show');
 
